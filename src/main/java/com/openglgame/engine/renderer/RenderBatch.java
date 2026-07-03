@@ -2,6 +2,7 @@ package com.openglgame.engine.renderer;
 
 import com.openglgame.engine.Window;
 import com.openglgame.engine.components.SpriteRenderer;
+import com.openglgame.engine.util.AssetPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joml.Vector4f;
@@ -34,8 +35,7 @@ public class RenderBatch {
     private Shader shader;
 
     public RenderBatch(int maxBatchSize) {
-        shader = new Shader("assets/shaders/default.glsl");
-        shader.compile();
+        shader = AssetPool.getShader("assets/shaders/default.glsl");
         this.sprites = new SpriteRenderer[maxBatchSize];
         this.maxBatchSize = maxBatchSize;
 

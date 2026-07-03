@@ -4,6 +4,7 @@ import com.openglgame.engine.Camera;
 import com.openglgame.engine.GameObject;
 import com.openglgame.engine.Transform;
 import com.openglgame.engine.components.SpriteRenderer;
+import com.openglgame.engine.util.AssetPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joml.Vector2f;
@@ -23,7 +24,7 @@ public class LevelEditorScene extends Scene {
         float totalHeight = (float)(300 - yOffset * 2);
         float sizeX = totalWidth / 100.0f;
         float sizeY = totalHeight / 100.0f;
-        float padding = 3;
+        float padding = 0;
 
         for (int x=0; x < 100; x++) {
             for (int y=0; y < 100; y++) {
@@ -35,6 +36,12 @@ public class LevelEditorScene extends Scene {
                 this.addGameObjectToScene(go);
             }
         }
+
+        loadResources();
+    }
+
+    private void loadResources() {
+        AssetPool.getShader("assets/shaders/default.glsl");
     }
 
     @Override
